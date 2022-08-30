@@ -44,5 +44,3 @@ dz_vineyard
 gd_cbble
 lobby_mapveto
 ```
-
-You'll need python-dotenv and if you are using windows  you'll need to change the listdir to have replace the / with \\
