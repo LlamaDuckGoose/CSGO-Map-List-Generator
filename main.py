@@ -1,5 +1,6 @@
 from dotenv import load_dotenv
 import os
+import platform
 
 load_dotenv()
 
@@ -7,6 +8,7 @@ map_source = os.getenv("MAP_SOURCE_FOLDER")
 map_export = os.getenv("MAP_LIST_EXPORT_FILE")
 map_blacklist = os.getenv("MAP_BLACKLIST")
 include_workshop = os.getenv("INCLUDE_WORKSHOP")
+os_dir_separator = '/' if platform.system() == 'Linux' else '\\'
 
 
 def auto_generate_map_list():
@@ -15,9 +17,9 @@ def auto_generate_map_list():
     maps = list(filter(lambda x: x not in map_blacklist, maps_bsp))
 
     if include_workshop:
-        map_workshop_folder = os.listdir((map_source + '/workshop'))
+        map_workshop_folder = os.listdir((map_source + os_dir_separator + 'workshop'))
         for workshop in map_workshop_folder:
-            workshop_folder = os.listdir((map_source + '/workshop/' + workshop))
+            workshop_folder = os.listdir((map_source + os_dir_separator + 'workshop' + os_dir_separator + workshop))
             workshop_maps_bsp = list(filter(lambda x: x.endswith(".bsp"), workshop_folder))
             maps.extend(list(filter(lambda x: x not in map_blacklist, workshop_maps_bsp)))
 

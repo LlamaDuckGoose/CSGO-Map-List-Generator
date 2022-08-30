@@ -1,1 +1,1 @@
-dotenvhttps://github.com/LlamaDuckGoose/CSGO-Map-List-Generator
+python-dotenv
